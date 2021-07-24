@@ -1,0 +1,25 @@
+<div class="flex flex-col border">
+  <p mat-dialog-title>To-do List Form</p>
+  <div mat-dialog-content>
+    <form [formGroup]="toDoListForm">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput type="text" formControlName="title">
+        <mat-error>* required</mat-error>
+      </mat-form-field>
+      <mat-form-field floatLabel="always">
+        <mat-label>Body</mat-label>
+        <input matInput type="text" formControlName="body">
+        <mat-error *ngIf="toDoListForm.controls.body.errors?.required">* required</mat-error>
+        <mat-error *ngIf="toDoListForm.controls.body.errors?.pattern">* number only</mat-error>
+      </mat-form-field>
+      <br>
+      <span class="text-blue-500">{{ toDoListForm.value | json }}</span>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <app-primary-button mat-button cdkFocusInitial (click)="onSave()" [buttonText]="'save'"></app-primary-button>
+  </div>
+
+</div>

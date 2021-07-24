@@ -1,0 +1,9 @@
+<div class="flex flex-col items-center">
+  <app-primary-button
+    [isLoading]="isFetching"
+    [buttonText]="'Get Users'"
+    (click)="fetchJsonPlaceholderUsers()"
+  ></app-primary-button>
+
+  <span *ngFor="let user of users">{{user.name}}</span>
+</div>
